@@ -17,4 +17,13 @@ public class BookDiscountService
     {
         return quantity >= 5 && book.Price >= 20.00m;
     }
+
+    /// <summary>
+    /// Calculates discount for VIP loyalty club members (25% base discount).
+    /// </summary>
+    public decimal CalculateVipDiscount(Book book, decimal extraBonusPercentage = 0)
+    {
+        var totalDiscount = Math.Min(25.00m + extraBonusPercentage, 50.00m);
+        return CalculateDiscountedPrice(book, totalDiscount);
+    }
 }
